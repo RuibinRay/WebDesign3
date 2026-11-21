@@ -22,6 +22,9 @@
  * Away from the chip page a bag settles back to its resting pose once the pointer has left it.
  * A drag never follows the link the bag sits in; a plain click still does.
  *
+ * Full motion on every device: every bag on screen breathes, and bags outside a scroll scene turn as they
+ * travel up the screen (phones have no pointer to lean toward). Only the site's Reduce motion button stops it.
+ *
  * Modes:   card   rests at an angle (the shop)
  *          seq    the four-days screen: home.js sets host.__pose = { ry, o } as you scroll
  *          hero   the chip page: stays where you leave it; RC_BAG3D.turn(host) turns it over
@@ -188,11 +191,12 @@ import {
     if (v.row) {
       const gap = 2.26, span = gap * 3 + W + 0.5;
       dist = Math.max(span / (2 * TAN * camera.aspect), (H + 0.5) / (2 * TAN));
+      const liveRow = v.live();
       D.chips.forEach((c, i) => {
-        const g = bags[c.id].group, it = v.items[i];
+        const g = bags[c.id].group, it = v.items[i], ph = v.phase + i * 1.3;
         g.visible = true;
-        g.position.set((i - 1.5) * gap, i % 2 ? -0.07 : 0.07, 0);
-        g.rotation.set(it.pitch() - 0.01, it.yaw(), i % 2 ? 0.05 : -0.05);
+        g.position.set((i - 1.5) * gap, (i % 2 ? -0.07 : 0.07) + (liveRow ? Math.sin(now / 1700 + ph) * 0.03 : 0), 0);
+        g.rotation.set(it.pitch() - 0.01 + v.sx, it.yaw() + v.sy + (liveRow ? Math.sin(now / 1400 + ph) * 0.06 : 0), i % 2 ? 0.05 : -0.05);
       });
     } else {
       const it = v.items[0], live = v.live();
@@ -200,7 +204,7 @@ import {
       const g = bags[v.id].group;
       g.visible = true;
       g.position.set(0, live ? Math.sin(now / 1700 + v.phase) * 0.035 : 0, 0);
-      g.rotation.set(it.pitch(), it.yaw() + (live ? Math.sin(now / 1400 + v.phase) * 0.07 : 0), ROLL[v.mode] || 0);
+      g.rotation.set(it.pitch() + v.sx, it.yaw() + v.sy + (live ? Math.sin(now / 1400 + v.phase) * 0.07 : 0), ROLL[v.mode] || 0);
     }
     camera.position.set(0, 0, dist);
     camera.updateProjectionMatrix();
@@ -219,6 +223,7 @@ import {
     v.items = v.row ? D.chips.map((c, i) => new Item((1.5 - i) * 0.17)) : [new Item(base)];
     v.on = false; v.dirty = true; v.drawn = false; v.w = v.h = 0;
     v.phase = views.length * 1.7; v.inside = false; v.hold = 0; v.held = null; v.back = false; v.deg = -1;
+    v.sx = v.sy = 0; /* the turn that comes from scrolling (see step) */
     v.zone = host.closest('a, .card') || host; /* the card, link or band the bag sits in */
     const link = host.closest('a');
 
@@ -315,8 +320,10 @@ import {
       });
     }
   }
-  /* the bag on stage breathes a little; the others hold still */
-  View.prototype.live = function () { return (this.mode === 'seq' || this.mode === 'hero') && !reduce() && !testing; };
+  /* Full motion on every device. Every bag on screen breathes a little, and bags that are not driven by
+     their own scroll scene (shop, pairings, box, the next-flavour band) turn as they travel up the screen,
+     so a phone, which has no pointer to lean toward, still sees them move. */
+  View.prototype.live = function () { return !reduce() && !testing; };
   View.prototype.step = function (dt, now) {
     const v = this;
     if (!v.on || !ready(v)) return false;
@@ -325,9 +332,20 @@ import {
       if (pose.o < 0.01) return false;
       v.items[0].base = pose.ry;
     }
+    let swaying = false;
+    if (v.mode !== 'seq' && v.mode !== 'hero') {
+      let ty = 0, tx = 0;
+      if (!reduce()) {
+        const r = v.host.getBoundingClientRect(), c = clamp((r.top + r.height / 2) / root.innerHeight - 0.5, -0.8, 0.8);
+        ty = -c * 0.75; tx = c * 0.16;
+      }
+      const k = reduce() ? 1 : 1 - Math.exp(-dt * 6);
+      v.sy += (ty - v.sy) * k; v.sx += (tx - v.sx) * k;
+      if (Math.abs(ty - v.sy) > 0.0015 || Math.abs(tx - v.sx) > 0.0015) swaying = true; /* keep the loop running until it arrives */
+    }
     /* with a mouse a bag settles when the pointer leaves it; on touch, a little after you let go */
     const settle = fine ? !v.inside : now > v.hold;
-    let moving = false, waiting = false;
+    let moving = swaying, waiting = false;
     for (let i = 0; i < v.items.length; i++) {
       const it = v.items[i];
       if (it.update(dt, now, v.free, settle)) moving = true;
@@ -374,6 +392,7 @@ import {
     if (testing) v.on = true; else io.observe(h);
   });
   root.addEventListener('resize', refresh);
+  root.addEventListener('scroll', wake, { passive: true });
 
   /* ───────── the label: the drawing, front then back, as textures ───────── */
   const TW = ART.label.px, TH = Math.round((TW * ART.label.h) / ART.label.w);
@@ -413,7 +432,7 @@ import {
     /* where a host's bag (or bags) is turned to right now: for tests and for anything that wants to follow it */
     state(host) {
       const v = byHost.get(host);
-      return v ? v.items.map((it) => ({ yaw: it.yaw(), pitch: it.pitch(), turned: it.oy, spinning: Math.abs(it.vel) > 0.03 })) : null;
+      return v ? v.items.map((it) => ({ yaw: it.yaw() + v.sy, pitch: it.pitch() + v.sx, turned: it.oy, scrollTurn: v.sy, spinning: Math.abs(it.vel) > 0.03 })) : null;
     },
     refresh: refresh,
   };

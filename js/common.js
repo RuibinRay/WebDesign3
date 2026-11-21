@@ -276,16 +276,19 @@
 
   /* the 3D bags, only on pages that show one. A flavour page fetches it at once, so its bag turns 3D
      while you are still arriving; the home page waits until its films and photos have loaded. */
+  var loaded3d = false;
   function load3d() {
+    /* checked here, not when this file runs: the home page builds its bags in a later script */
+    if (loaded3d || !document.querySelector('[data-b3]')) return;
+    loaded3d = true;
     var s = document.createElement('script');
     s.src = 'js/bag3d.js';
     document.body.appendChild(s);
   }
-  if (document.querySelector('[data-b3]')) {
-    if (pack) load3d();
-    else if (document.readyState === 'complete') load3d();
-    else root.addEventListener('load', load3d);
-  }
+  /* the home page gives the hero film a head start, then loads it whether or not every photo has arrived:
+     on a slow phone connection the load event can be many seconds away */
+  if (pack || document.readyState === 'complete') load3d();
+  else { root.addEventListener('load', load3d); setTimeout(load3d, 1500); }
 
   /* fetch a page ahead when the pointer rests on its link, so the transition starts at once */
   if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {

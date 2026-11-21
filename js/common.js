@@ -123,24 +123,55 @@
     /* a transition the browser aborts (background tab, quick reload) rejects these; that is not an error */
     [t.ready, t.finished, t.updateCallbackDone].forEach(function (p) { if (p && p.catch) p.catch(function () {}); });
   }
+  /* where the visitor clicked: the next page opens as a circle from that point */
+  var lastPoint = null;
+  document.addEventListener('pointerdown', function (e) { lastPoint = { x: e.clientX / root.innerWidth, y: e.clientY / root.innerHeight }; }, true);
+  var isChip = function (url) { try { return !!url && /\/chip\.html$/.test(new URL(url, location.href).pathname); } catch (err) { return false; } };
+  var pack = document.getElementById('pack'), title = document.getElementById('name');
   root.addEventListener('pageswap', function (e) {
     var t = e.viewTransition;
     if (!t) return;
     guard(t);
     if (reduce()) { t.skipTransition(); return; }
     var dest = e.activation && e.activation.entry && e.activation.entry.url;
-    var group = lastLink && dest && lastLink.href === dest && lastLink.closest('[data-morph]');
-    if (!group) return;
-    var id = group.getAttribute('data-morph');
-    nameIt(partOf(group, id, 'bag'), 'bag-' + id, 'bag');
-    nameIt(partOf(group, id, 'name'), 'name-' + id, 'name');
+    var clicked = lastLink && dest && lastLink.href === dest;
+    var group = clicked && lastLink.closest('[data-morph]'), hero = false;
+    if (group) {
+      var id = group.getAttribute('data-morph');
+      nameIt(partOf(group, id, 'bag'), 'bag-' + id, 'bag');
+      nameIt(partOf(group, id, 'name'), 'name-' + id, 'name');
+    } else if (pack && isChip(dest)) {
+      /* flavour to flavour from the menu: this bag and title turn into the next ones */
+      nameIt(pack, 'hero-pack', 'bag');
+      nameIt(title, 'hero-name', 'name');
+      hero = true;
+    }
+    var point = clicked && lastPoint ? lastPoint : { x: 0.5, y: 0.5 };
+    try { sessionStorage.setItem('racimo.vt', JSON.stringify({ x: point.x, y: point.y, hero: hero })); } catch (err) {}
   });
   root.addEventListener('pagereveal', function (e) {
     var t = e.viewTransition;
+    var at = null;
+    try { at = JSON.parse(sessionStorage.getItem('racimo.vt')); sessionStorage.removeItem('racimo.vt'); } catch (err) {}
     if (!t) return;
     guard(t);
-    if (reduce()) t.skipTransition();
-    t.finished.then(clearMorph, clearMorph);
+    if (reduce()) { t.skipTransition(); return; }
+    if (at) {
+      d.style.setProperty('--vt-x', (at.x * 100).toFixed(1) + '%');
+      d.style.setProperty('--vt-y', (at.y * 100).toFixed(1) + '%');
+    }
+    /* arriving from another flavour's page by its menu: take the names the old page gave its hero */
+    var restore = null;
+    if (pack && at && at.hero) {
+      restore = [pack.style.viewTransitionName, title.style.viewTransitionName];
+      pack.style.viewTransitionName = 'hero-pack';
+      title.style.viewTransitionName = 'hero-name';
+    }
+    var done = function () {
+      clearMorph();
+      if (restore) { pack.style.viewTransitionName = restore[0]; title.style.viewTransitionName = restore[1]; }
+    };
+    t.finished.then(done, done);
   });
   root.addEventListener('pageshow', function (e) { if (e.persisted) setTimeout(clearMorph, 1500); });
 
@@ -243,13 +274,26 @@
   });
   paintMotion();
 
-  /* the 3D bags: fetched after everything else, and only on pages that show a bag */
-  root.addEventListener('load', function () {
-    if (!document.querySelector('[data-b3]')) return;
+  /* the 3D bags, only on pages that show one. A flavour page fetches it at once, so its bag turns 3D
+     while you are still arriving; the home page waits until its films and photos have loaded. */
+  function load3d() {
     var s = document.createElement('script');
     s.src = 'js/bag3d.js';
     document.body.appendChild(s);
-  });
+  }
+  if (document.querySelector('[data-b3]')) {
+    if (pack) load3d();
+    else if (document.readyState === 'complete') load3d();
+    else root.addEventListener('load', load3d);
+  }
+
+  /* fetch a page ahead when the pointer rests on its link, so the transition starts at once */
+  if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+    var rules = document.createElement('script');
+    rules.type = 'speculationrules';
+    rules.textContent = JSON.stringify({ prefetch: [{ where: { href_matches: ['*chip.html*', '*index.html*', '*/'] }, eagerness: 'moderate' }] });
+    document.head.appendChild(rules);
+  }
 
   $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 

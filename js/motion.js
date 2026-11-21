@@ -1,16 +1,16 @@
 /*
  * Motion setting, read before the page paints.
- * Full motion by default on desktop. Phones and tablets follow the system "reduce motion"
- * switch. A visitor's own choice, made with the footer button, is remembered and always wins.
+ * Full motion by default on every device, Mac and phones included, whatever the system
+ * "reduce motion" switch says. Only the footer button turns it down, and that choice is remembered.
  */
 (function () {
   var d = document.documentElement;
   d.classList.add('js');
   var saved = null;
   try { saved = localStorage.getItem('racimo.motion'); } catch (e) {}
-  var touch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  var sysReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (saved === 'reduce' || (saved === null && touch && sysReduce)) d.classList.add('reduce');
+  /* Full motion everywhere by default: Mac, Windows, iPhone, Android, whatever the system setting says.
+     Only the visitor's own choice, made with the "Reduce motion" button in the footer, turns it down. */
+  if (saved === 'reduce') d.classList.add('reduce');
   /* A page morph the browser abandons (a background tab, a quick reload) rejects its promises. That is
      not an error. Caught here, in the head, because the reveal can happen before the later scripts run. */
   ['pageswap', 'pagereveal'].forEach(function (name) {

@@ -280,6 +280,11 @@ em.es { font-style: italic; }
 .seq__mid { grid-column: 2; grid-row: 2; display: grid; grid-template-rows: minmax(0, 1.05fr) minmax(0, 0.95fr); justify-items: center; align-items: center; min-height: 0; }
 .seq__fruit { width: 100%; display: grid; place-items: center; min-height: 0; height: 100%; }
 .seq__fruit svg { width: 112%; max-width: none; max-height: 100%; overflow: visible; will-change: transform; }
+/* the photographs: cut-outs on the page colour, with the same flat printed shadow as the bags */
+.seq__photos { position: relative; width: 100%; height: 100%; will-change: transform; }
+.seq__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 0 rgba(26, 19, 13, 0.15)); }
+.seq__chipset--photo { display: grid; place-items: center; will-change: transform, opacity, clip-path; }
+.seq__chipsphoto { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 0 rgba(26, 19, 13, 0.15)); }
 .seq__chips { position: relative; width: 100%; height: 100%; }
 .seq__chipset { position: absolute; inset: 0; visibility: hidden; }
 .seq__chip { --w: clamp(62px, 9vw, 148px); position: absolute; left: 50%; top: 10%; width: var(--w); margin-left: calc(var(--w) / -2); opacity: 0; will-change: transform, opacity; }

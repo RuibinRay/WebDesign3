@@ -43,10 +43,20 @@ for (const file of renders.filter((f) => /\.(png|jpe?g|webp)$/i.test(f))) {
   if (!known.has(id)) { console.log(`  · ${file}: not a shot id in js/shots.js, skipped`); continue; }
   const src = path.join(SRC, file), big = path.join(OUT, `${id}.webp`);
   if (!newer(src, big)) continue;
-  const meta = await sharp(src).metadata();
-  await sharp(src).resize({ width: Math.min(2000, meta.width) }).webp({ quality: 80, effort: 5 }).toFile(big);
-  await sharp(src).resize({ width: Math.min(900, meta.width) }).webp({ quality: 78, effort: 5 }).toFile(path.join(OUT, `${id}-sm.webp`));
-  console.log(`  ✓ ${id.padEnd(14)} ${meta.width}×${meta.height}`);
+  /* a cut-out is trimmed to its subject, with a thin clear margin, so it lines up with the layout */
+  const shot = S.shots.find((s) => s.id === id);
+  let input = src;
+  if (shot && shot.cutout) {
+    const m0 = await sharp(src).metadata();
+    if (!m0.hasAlpha) console.log(`  ! ${id}: no transparency in the render; check it by eye`);
+    input = await sharp(src).trim({ threshold: 8 }).toBuffer();
+    const mt = await sharp(input).metadata(), pad = Math.round(Math.max(mt.width, mt.height) * 0.02);
+    input = await sharp(input).extend({ top: pad, bottom: pad, left: pad, right: pad, background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+  }
+  const meta = await sharp(input).metadata();
+  await sharp(input).resize({ width: Math.min(2000, meta.width) }).webp({ quality: 80, alphaQuality: 90, effort: 5 }).toFile(big);
+  await sharp(input).resize({ width: Math.min(900, meta.width) }).webp({ quality: 78, alphaQuality: 90, effort: 5 }).toFile(path.join(OUT, `${id}-sm.webp`));
+  console.log(`  ✓ ${id.padEnd(14)} ${meta.width}×${meta.height}${shot && shot.cutout ? ' (trimmed cut-out)' : ''}`);
 }
 
 /* social card: the first frame of the hero film */

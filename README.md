@@ -6,7 +6,7 @@ Concept website for a plantain chip brand from Talamanca, Costa Rica. Plain HTML
 
 **Live:** https://ruibinray.github.io/WebDesign3/ (GitHub Pages, deployed from the `main` branch of RuibinRay/WebDesign3).
 
-**Status (2026-11-20):** the site is complete. All 25 pictures and both scroll films were generated on Higgsfield and are in `assets/`. If a picture is ever removed or re-rolled, its slot falls back to a drawing of the right thing on the right colour until the new one exists.
+**Status (2026-11-20):** the site is complete. All 33 pictures and both scroll films were generated on Higgsfield (the last 8, added later for 16 credits, are the transparent cut-outs of the plantain and chips on the four-days screen) and are in `assets/`. If a picture is ever removed or re-rolled, its slot falls back to a drawing of the right thing on the right colour until the new one exists.
 
 ## Run it
 

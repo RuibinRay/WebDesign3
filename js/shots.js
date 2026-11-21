@@ -89,7 +89,22 @@
 
   var gpt = function (o, quality) { o.model = 'gpt_image_2_6'; o.params = { resolution: '2k', quality: quality || 'high' }; return o; };
   var soul = function (o) { o.model = 'soul_cinematic'; o.params = { quality: '2k' }; return o; };
+  /* a cut-out: transparent background, so the subject sits on whatever colour the page is at that moment */
+  var cut = function (o) { gpt(o); o.params.background = 'transparent'; o.params.output_format = 'png'; o.cutout = true; return o; };
   var shots = [];
+
+  /* The four-days screen: one plantain, the same fruit on each day, and that day's chips, as cut-outs. */
+  var CUTOUT =
+    'Photoreal premium food photography, medium-format camera, 100mm lens, f/11, every texture crisp, colour-accurate and appetising. ' +
+    'One large soft key light from above and slightly camera-left, a gentle highlight along the top edge. ' +
+    'The subject is isolated on a fully transparent background: no backdrop, no surface, no floor, no shadow, no reflection. Nothing else in the frame.';
+  var ONE = {
+    verde: 'hard and bright green with angular ridges, no yellow at all, a dry brown tip at the flower end',
+    pinton: 'turning: yellow through the middle, still green towards both ends, a few faint brown marks',
+    maduro: 'fully yellow and freckled all over with small brown-black spots',
+    miel: 'very ripe: the thin peel almost entirely black and slightly wrinkled, with a few amber-yellow patches',
+  };
+  var PLANTAIN_POSE = 'A single whole plantain lying on its side, seen exactly side-on, long and gently curved with the curve bowing upwards, stalk end on the left, flower tip on the right, filling about 90% of the frame width, centred.';
 
   /* ───────────── STAGE 1: fruit and chips, no reference ───────────── */
   IDS.forEach(function (c) {
@@ -175,7 +190,46 @@
     })
   );
 
+  /* the four-days screen: the plantain on day 1, and each day's chips */
+  shots.push(
+    cut({
+      id: 'verde-plantain', stage: 1, aspect: '16:9', tone: 'studio', chip: 'verde', art: 'fruit', bg: '#5A9A2D',
+      used: ['Home: the four days (day 1)', 'Reference for the same plantain on days 5, 9 and 12'],
+      alt: 'A green plantain on the day it is cut.',
+      brief: 'Cut-out: one hard green plantain, side-on, stalk left. The other three days are this same fruit, ripened.',
+      prompt: CUTOUT + ' ' + PLANTAIN_POSE + ' The plantain is ' + ONE.verde + '. ' + NEG,
+    })
+  );
+  IDS.forEach(function (c) {
+    shots.push(
+      cut({
+        id: c + '-chips', stage: 1, aspect: '16:9', tone: 'studio', chip: c, art: 'pile', bg: BG[c],
+        used: ['Home: the four days (' + NAMES[c] + ')'],
+        alt: 'A handful of Racimo ' + NAMES[c] + ' plantain chips.',
+        brief: 'Cut-out: six ' + NAMES[c] + ' chips laid out in a loose shallow arc, seen from above at a slight angle.',
+        prompt:
+          CUTOUT + ' Seen from above at a slight angle: six ' + CHIP[c] + ', laid out side by side in one loose, shallow arc across the frame, ' +
+          'each chip separate or just touching, each at a slightly different angle, all sharp. ' + NEG,
+      })
+    );
+  });
+
   /* ───────────── STAGE 2: every shot with a bag, referenced to the drawn pack; film last frames ───────────── */
+  ['pinton', 'maduro', 'miel'].forEach(function (c) {
+    var days = { pinton: 'four days', maduro: 'eight days', miel: 'eleven days' }[c];
+    shots.push(
+      cut({
+        id: c + '-plantain', stage: 2, aspect: '16:9', tone: 'studio', chip: c, art: 'fruit', bg: BG[c], refs: ['higgsfield/renders/verde-plantain.png'],
+        used: ['Home: the four days (' + NAMES[c] + ')'],
+        alt: 'The same plantain on the day ' + NAMES[c] + ' is cut.',
+        brief: 'Cut-out: the same plantain as on day 1, ' + days + ' later: ' + ONE[c] + '.',
+        prompt:
+          'The same plantain as in the reference image, ' + days + ' later. Exactly the same fruit: same size, shape, curve, angle, position in the frame, stalk and tip, same lens and light. ' +
+          'Only the peel has ripened: it is now ' + ONE[c] + '. ' +
+          'Isolated on a fully transparent background: no backdrop, no surface, no shadow, no reflection. ' + NEG,
+      })
+    );
+  });
   IDS.forEach(function (c) {
     shots.push(
       gpt({

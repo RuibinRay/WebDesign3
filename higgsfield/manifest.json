@@ -433,6 +433,148 @@
       "file": "higgsfield/renders/film-ripen.mp4",
       "seconds": 302,
       "at": "2026-11-21T00:44:24.839Z"
+    },
+    "pinton-chips": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high",
+        "background": "transparent",
+        "output_format": "png"
+      },
+      "aspect": "16:9",
+      "inputs": [],
+      "job_id": "2ea680a2-1aad-4716-b7d9-6ed0de229a41",
+      "file": "higgsfield/renders/pinton-chips.png",
+      "seconds": 36,
+      "at": "2026-11-21T01:35:16.531Z"
+    },
+    "verde-plantain": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high",
+        "background": "transparent",
+        "output_format": "png"
+      },
+      "aspect": "16:9",
+      "inputs": [],
+      "job_id": "509f1f05-9248-4a61-8eea-d1dd64300a22",
+      "file": "higgsfield/renders/verde-plantain.png",
+      "seconds": 36,
+      "at": "2026-11-21T01:35:16.904Z"
+    },
+    "verde-chips": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high",
+        "background": "transparent",
+        "output_format": "png"
+      },
+      "aspect": "16:9",
+      "inputs": [],
+      "job_id": "4c6d91b5-9f18-4e4f-9b1c-4b71a3b1d280",
+      "file": "higgsfield/renders/verde-chips.png",
+      "seconds": 36,
+      "at": "2026-11-21T01:35:17.156Z"
+    },
+    "maduro-chips": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high",
+        "background": "transparent",
+        "output_format": "png"
+      },
+      "aspect": "16:9",
+      "inputs": [],
+      "job_id": "e04771e8-724d-46dd-84bc-eddfc4699eb4",
+      "file": "higgsfield/renders/maduro-chips.png",
+      "seconds": 41,
+      "at": "2026-11-21T01:35:22.387Z"
+    },
+    "miel-chips": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high",
+        "background": "transparent",
+        "output_format": "png"
+      },
+      "aspect": "16:9",
+      "inputs": [],
+      "job_id": "964718a6-814b-4c9c-a0fc-24a6b2beac2b",
+      "file": "higgsfield/renders/miel-chips.png",
+      "seconds": 35,
+      "at": "2026-11-21T01:35:51.803Z"
+    },
+    "maduro-plantain": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high",
+        "background": "transparent",
+        "output_format": "png"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "verde-plantain.png"
+      ],
+      "job_id": "937a4e7c-e680-4001-91d8-11e236247169",
+      "file": "higgsfield/renders/maduro-plantain.png",
+      "seconds": 36,
+      "at": "2026-11-21T01:36:27.935Z"
+    },
+    "miel-plantain": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high",
+        "background": "transparent",
+        "output_format": "png"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "verde-plantain.png"
+      ],
+      "job_id": "da5be0f3-f6e5-4fc1-ba06-2847d7187341",
+      "file": "higgsfield/renders/miel-plantain.png",
+      "seconds": 42,
+      "at": "2026-11-21T01:36:33.993Z"
+    },
+    "pinton-plantain": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high",
+        "background": "transparent",
+        "output_format": "png"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "verde-plantain.png"
+      ],
+      "job_id": "c5fe4ed2-6030-488a-afd5-f58aeb0e9316",
+      "file": "higgsfield/renders/pinton-plantain.png",
+      "seconds": 42,
+      "at": "2026-11-21T01:36:34.278Z"
     }
   }
 }

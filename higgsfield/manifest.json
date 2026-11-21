@@ -1,0 +1,438 @@
+{
+  "images": {
+    "finca": {
+      "status": "done",
+      "kind": "image",
+      "model": "soul_cinematic",
+      "params": {
+        "quality": "2k"
+      },
+      "aspect": "3:2",
+      "inputs": [],
+      "job_id": "7c9b4321-fae4-422b-b75f-51d23498babd",
+      "file": "higgsfield/renders/finca.png",
+      "seconds": 26,
+      "at": "2026-11-21T00:33:09.882Z"
+    },
+    "pinton-fruit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "07bae7fb-a65c-4f43-9a2c-8f3083f051c0",
+      "file": "higgsfield/renders/pinton-fruit.png",
+      "seconds": 32,
+      "at": "2026-11-21T00:33:59.895Z"
+    },
+    "verde-fruit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "59a54e7d-df67-4c2a-bff0-010546b83308",
+      "file": "higgsfield/renders/verde-fruit.png",
+      "seconds": 32,
+      "at": "2026-11-21T00:34:00.172Z"
+    },
+    "pinton-pile": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "1:1",
+      "inputs": [],
+      "job_id": "3a3b7daa-33e2-4192-acb9-2b3666ae6d7a",
+      "file": "higgsfield/renders/pinton-pile.png",
+      "seconds": 43,
+      "at": "2026-11-21T00:34:10.249Z"
+    },
+    "verde-pile": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "1:1",
+      "inputs": [],
+      "job_id": "a49cc39a-752a-43c4-95fd-c712493e6547",
+      "file": "higgsfield/renders/verde-pile.png",
+      "seconds": 45,
+      "at": "2026-11-21T00:34:12.753Z"
+    },
+    "maduro-fruit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "aee0077e-ff96-4ebc-b56b-8a3fbc011091",
+      "file": "higgsfield/renders/maduro-fruit.png",
+      "seconds": 36,
+      "at": "2026-11-21T00:34:35.664Z"
+    },
+    "miel-fruit": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [],
+      "job_id": "cd919979-49df-44a0-87bd-53cad97c8007",
+      "file": "higgsfield/renders/miel-fruit.png",
+      "seconds": 33,
+      "at": "2026-11-21T00:34:43.035Z"
+    },
+    "maduro-pile": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "1:1",
+      "inputs": [],
+      "job_id": "bd0caaa7-4d20-438a-a1aa-79bab788baa8",
+      "file": "higgsfield/renders/maduro-pile.png",
+      "seconds": 45,
+      "at": "2026-11-21T00:34:45.595Z"
+    },
+    "miel-pile": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "1:1",
+      "inputs": [],
+      "job_id": "135de5c4-43e0-437f-893a-afe1636477eb",
+      "file": "higgsfield/renders/miel-pile.png",
+      "seconds": 44,
+      "at": "2026-11-21T00:34:57.149Z"
+    },
+    "corte": {
+      "status": "done",
+      "kind": "image",
+      "model": "soul_cinematic",
+      "params": {
+        "quality": "2k"
+      },
+      "aspect": "3:4",
+      "inputs": [],
+      "job_id": "c29491c3-2877-4bf9-8fd1-e23a3ea5541e",
+      "file": "higgsfield/renders/corte.png",
+      "seconds": 20,
+      "at": "2026-11-21T00:35:03.167Z"
+    },
+    "rio": {
+      "status": "done",
+      "kind": "image",
+      "model": "soul_cinematic",
+      "params": {
+        "quality": "2k"
+      },
+      "aspect": "3:2",
+      "inputs": [],
+      "job_id": "83751b36-3a15-4f70-b3e1-71676bb14ca4",
+      "file": "higgsfield/renders/rio.png",
+      "seconds": 18,
+      "at": "2026-11-21T00:35:03.552Z"
+    },
+    "ripen-start": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [],
+      "job_id": "fb715995-95ef-4642-9f54-86dba5974f65",
+      "file": "higgsfield/renders/ripen-start.png",
+      "seconds": 34,
+      "at": "2026-11-21T00:35:09.532Z"
+    },
+    "tajar": {
+      "status": "done",
+      "kind": "image",
+      "model": "soul_cinematic",
+      "params": {
+        "quality": "2k"
+      },
+      "aspect": "3:4",
+      "inputs": [],
+      "job_id": "d54511a5-718b-4e21-a75d-3d28a4c193b1",
+      "file": "higgsfield/renders/tajar.png",
+      "seconds": 22,
+      "at": "2026-11-21T00:35:19.302Z"
+    },
+    "paila-start": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [],
+      "job_id": "ceb8ebd1-ff3f-4ba6-a300-4c98d576a9e7",
+      "file": "higgsfield/renders/paila-start.png",
+      "seconds": 32,
+      "at": "2026-11-21T00:35:34.900Z"
+    },
+    "verde-bag": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "verde-pack.png"
+      ],
+      "job_id": "44bf71e0-35c5-4159-8538-3d7c5564f5c0",
+      "file": "higgsfield/renders/verde-bag.png",
+      "seconds": 39,
+      "at": "2026-11-21T00:36:13.739Z"
+    },
+    "verde-pair": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "3:2",
+      "inputs": [
+        "verde-pack.png"
+      ],
+      "job_id": "b538354d-1d00-4e3c-ab22-4a0a61d9deea",
+      "file": "higgsfield/renders/verde-pair.png",
+      "seconds": 42,
+      "at": "2026-11-21T00:36:16.636Z"
+    },
+    "pinton-bag": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "pinton-pack.png"
+      ],
+      "job_id": "5be1c6bb-754d-4ea4-af3c-14f70976fb9d",
+      "file": "higgsfield/renders/pinton-bag.png",
+      "seconds": 42,
+      "at": "2026-11-21T00:36:17.381Z"
+    },
+    "pinton-pair": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "3:2",
+      "inputs": [
+        "pinton-pack.png"
+      ],
+      "job_id": "3609df36-aaf0-433a-a61a-b77cb86fb17c",
+      "file": "higgsfield/renders/pinton-pair.png",
+      "seconds": 47,
+      "at": "2026-11-21T00:36:21.713Z"
+    },
+    "maduro-pair": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "3:2",
+      "inputs": [
+        "maduro-pack.png"
+      ],
+      "job_id": "f945d607-5904-48e2-880a-8c2810e05424",
+      "file": "higgsfield/renders/maduro-pair.png",
+      "seconds": 41,
+      "at": "2026-11-21T00:36:57.437Z"
+    },
+    "miel-bag": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "miel-pack.png"
+      ],
+      "job_id": "d2e9d3b0-083a-4607-ae27-38617027e83c",
+      "file": "higgsfield/renders/miel-bag.png",
+      "seconds": 43,
+      "at": "2026-11-21T00:37:01.150Z"
+    },
+    "maduro-bag": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "4:5",
+      "inputs": [
+        "maduro-pack.png"
+      ],
+      "job_id": "3251784a-e0fe-45a0-a298-e33197c434c2",
+      "file": "higgsfield/renders/maduro-bag.png",
+      "seconds": 48,
+      "at": "2026-11-21T00:37:02.085Z"
+    },
+    "box": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "3:2",
+      "inputs": [
+        "verde-pack.png",
+        "pinton-pack.png",
+        "maduro-pack.png",
+        "miel-pack.png"
+      ],
+      "job_id": "b61ccb60-a2aa-4924-83bf-b0e886e3c931",
+      "file": "higgsfield/renders/box.png",
+      "seconds": 45,
+      "at": "2026-11-21T00:39:13.880Z"
+    },
+    "miel-pair": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "3:2",
+      "inputs": [
+        "miel-pack.png"
+      ],
+      "job_id": "0a75df84-f3f7-4da4-b86d-0bbeeac70f5c",
+      "file": "higgsfield/renders/miel-pair.png",
+      "seconds": 44,
+      "at": "2026-11-21T00:37:05.756Z"
+    },
+    "ripen-end": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "ripen-start.png"
+      ],
+      "job_id": "2dbe40b0-5812-4f5c-95b8-68ac2b5825d8",
+      "file": "higgsfield/renders/ripen-end.png",
+      "seconds": 40,
+      "at": "2026-11-21T00:37:37.572Z"
+    },
+    "paila-end": {
+      "status": "done",
+      "kind": "image",
+      "model": "gpt_image_2_6",
+      "params": {
+        "resolution": "2k",
+        "quality": "high"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "paila-start.png"
+      ],
+      "job_id": "30c71f31-bc8a-4705-842c-bb23729d8e91",
+      "file": "higgsfield/renders/paila-end.png",
+      "seconds": 42,
+      "at": "2026-11-21T00:37:43.218Z"
+    },
+    "film-paila": {
+      "status": "done",
+      "kind": "film",
+      "model": "kling4_0",
+      "params": {
+        "mode": "image-to-video",
+        "duration": 5,
+        "resolution": "1080p"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "paila-start.png",
+        "paila-end.png"
+      ],
+      "job_id": "98b7f228-e1e7-4642-a8c9-2631f3fd7759",
+      "file": "higgsfield/renders/film-paila.mp4",
+      "seconds": 267,
+      "at": "2026-11-21T00:43:49.668Z"
+    },
+    "film-ripen": {
+      "status": "done",
+      "kind": "film",
+      "model": "kling4_0",
+      "params": {
+        "mode": "image-to-video",
+        "duration": 10,
+        "resolution": "1080p"
+      },
+      "aspect": "16:9",
+      "inputs": [
+        "ripen-start.png",
+        "ripen-end.png"
+      ],
+      "job_id": "df6c620e-3f29-4b6b-b603-32a69cf3bd85",
+      "file": "higgsfield/renders/film-ripen.mp4",
+      "seconds": 302,
+      "at": "2026-11-21T00:44:24.839Z"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "racimo",
+  "private": true,
+  "type": "module",
+  "description": "Racimo: concept site for a Costa Rican plantain chip brand. Plain HTML, CSS and JS. sharp optimises generated images; esbuild and three are only needed to rebuild js/bag3d.js.",
+  "scripts": {
+    "serve": "node tools/serve.mjs 4183",
+    "plan": "node higgsfield/generate.mjs",
+    "optimize": "node higgsfield/optimize.mjs",
+    "build-3d": "node tools/build-3d.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "sharp": "^0.35.5",
+    "three": "^0.187.0"
+  }
+}

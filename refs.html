@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pack references · Racimo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/racimo.css">
+  <script src="js/motion.js"></script>
+  <style>
+    body { background: var(--papel); color: var(--tinta); }
+    .refs { padding: 40px var(--pad) 96px; --fg: var(--tinta); display: grid; gap: 28px; }
+    .refs__title { display: flex; align-items: center; gap: 14px; }
+    .refs__title .brand__mark { width: 44px; height: 44px; }
+    .refs__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .ref { display: grid; gap: 10px; }
+    .ref__pic { padding: 9%; border-radius: var(--r); background: #fff8; box-shadow: inset 0 0 0 1.5px var(--tinta); }
+    .ref__pic svg { width: 100%; height: auto; }
+    .ref p { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .06em; }
+    .ref a { font-size: 14px; }
+    .refs__row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .refs__msg { min-height: 1.5em; font-weight: 600; }
+    code { font-family: var(--f-mono); font-size: 12.5px; background: rgba(26, 19, 13, .08); padding: 2px 6px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <main class="refs">
+    <a class="back mono" href="shots.html">← Shot sheet</a>
+    <div class="refs__title"><span class="brand__mark" data-mark="color"></span><h1 class="h2">Pack references</h1></div>
+    <p class="lead">The four bag fronts, drawn in code. They are the pack design, and they are also the reference image for every photo that shows a bag: the image model copies this label instead of inventing one. Saving them is free.</p>
+    <div class="refs__row">
+      <button class="btn btn--lg" type="button" data-save>Save the four references</button>
+      <p class="refs__msg" data-msg role="status" aria-live="polite"></p>
+    </div>
+    <p class="small">The button writes <code>higgsfield/refs/&lt;chip&gt;-pack.png</code> (1200 × 1600) through the local preview server (<code>node tools/serve.mjs</code>). On any other host, use the download link under each pack and put the files in that folder yourself.</p>
+    <div class="refs__grid" data-grid></div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/art.js"></script>
+  <script>
+    (function () {
+      var D = window.RACIMO, S = window.RACIMO_SHOTS, ART = window.RC_ART;
+      var grid = document.querySelector('[data-grid]'), msg = document.querySelector('[data-msg]');
+      grid.innerHTML = S.refs.map(function (r) {
+        return '<div class="ref"><div class="ref__pic">' + ART.bag(r.chip) + '</div><p>' + r.file + '</p><a href="#" data-dl="' + r.chip + '">Download PNG</a></div>';
+      }).join('');
+
+      /* the drawing as a 1200 × 1600 PNG, its web fonts inlined so the lettering survives (RC_ART.raster) */
+      function png(chip) {
+        return ART.raster(function (css) { return ART.bag(chip, { standalone: true, style: css, backdrop: D.color.papel }); }, 1200, 1600)
+          .then(function (cv) {
+            return new Promise(function (resolve, reject) {
+              cv.toBlob(function (b) { b ? resolve(b) : reject(new Error('could not make the PNG')); }, 'image/png');
+            });
+          });
+      }
+      window.RC_REFS = { png: png };
+
+      document.querySelector('[data-save]').addEventListener('click', function () {
+        msg.textContent = 'Saving…';
+        var done = [];
+        S.refs.reduce(function (p, r) {
+          return p.then(function () { return png(r.chip); }).then(function (blob) {
+            return fetch('/__ref/' + r.id, { method: 'POST', headers: { 'content-type': 'image/png' }, body: blob });
+          }).then(function (res) {
+            if (!res.ok) throw new Error('the server did not accept ' + r.id + ' (' + res.status + '). Is this the local preview server?');
+            done.push(r.id);
+          });
+        }, Promise.resolve()).then(function () {
+          msg.textContent = 'Saved ' + done.length + ' references to higgsfield/refs/.';
+        }).catch(function (e) { msg.textContent = 'Not saved: ' + e.message; });
+      });
+      grid.addEventListener('click', function (e) {
+        var a = e.target.closest('[data-dl]');
+        if (!a) return;
+        e.preventDefault();
+        var chip = a.getAttribute('data-dl');
+        png(chip).then(function (blob) {
+          var l = document.createElement('a');
+          l.href = URL.createObjectURL(blob); l.download = chip + '-pack.png';
+          document.body.appendChild(l); l.click(); l.remove();
+        }).catch(function (err) { msg.textContent = 'Not made: ' + err.message; });
+      });
+    })();
+  </script>
+  <script src="js/media.js"></script>
+  <script src="js/common.js"></script>
+</body>
+</html>

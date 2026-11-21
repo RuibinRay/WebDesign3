@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shot sheet · Racimo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/racimo.css">
+  <script src="js/motion.js"></script>
+  <style>
+    body { background: var(--papel); color: var(--tinta); }
+    .sheet { padding: 40px var(--pad) 96px; --fg: var(--tinta); }
+    .sheet__head { display: grid; gap: 20px; padding-bottom: 32px; border-bottom: 1.5px solid var(--tinta); }
+    .sheet__title { display: flex; align-items: center; gap: 14px; }
+    .sheet__title .brand__mark { width: 44px; height: 44px; }
+    .stats2 { display: flex; flex-wrap: wrap; gap: 8px; }
+    .stat { padding: 10px 14px; border-radius: 12px; box-shadow: inset 0 0 0 1.5px var(--tinta); font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; }
+    .stat b { font-family: var(--f-display); font-stretch: 75%; font-weight: 800; font-size: 26px; margin-right: 8px; letter-spacing: 0; }
+    .routes { display: grid; gap: 10px; }
+    @media (min-width: 900px) { .routes { grid-template-columns: 1fr 1fr; } }
+    .route { padding: 20px 22px; border-radius: var(--r); background: #fff8; box-shadow: inset 0 0 0 1.5px var(--tinta); }
+    .route h2 { font-stretch: 75%; font-weight: 800; font-size: 28px; margin-bottom: 10px; }
+    .route ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 15px; }
+    code, pre { font-family: var(--f-mono); font-size: 12.5px; }
+    code { background: rgba(26, 19, 13, .08); padding: 2px 6px; border-radius: 5px; }
+    details.look { border-radius: var(--r); box-shadow: inset 0 0 0 1.5px var(--tinta); }
+    details.look summary { padding: 14px 20px; cursor: pointer; font-weight: 700; }
+    details.look dl { padding: 0 20px 20px; display: grid; gap: 12px; }
+    details.look dt { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+    details.look dd { font-size: 14px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 28px 0 18px; }
+    .filters button { min-height: 40px; padding: 0 16px; border: 0; border-radius: 99px; box-shadow: inset 0 0 0 1.5px var(--tinta); background: transparent; cursor: pointer; font-size: 14px; font-weight: 600; }
+    .filters button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
+    .shots { display: grid; gap: 12px; }
+    .shot { display: grid; gap: 22px; padding: 18px; border-radius: var(--r); background: #fff8; box-shadow: inset 0 0 0 1.5px var(--tinta); }
+    @media (min-width: 980px) { .shot { grid-template-columns: 240px minmax(0, 1fr); } }
+    .shot .slot { width: 100%; max-height: 320px; margin: 0 auto; }
+    .shot .slot__note { display: none; }
+    .shot__meta { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin-bottom: 10px; }
+    .shot__id { font-stretch: 75%; font-weight: 800; font-size: 30px; line-height: 1; margin-right: 8px; }
+    .tag { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 9px; border-radius: 99px; box-shadow: inset 0 0 0 1.5px var(--tinta); }
+    .tag--ready { background: var(--verde); }
+    .tag--pending { background: var(--maduro); }
+    .tag--free { background: var(--tinta); color: var(--papel); }
+    .shot__brief { margin-bottom: 6px; }
+    .shot__used, .shot__file { margin-bottom: 10px; font-size: 14px; opacity: .8; }
+    .shot pre { margin: 0; white-space: pre-wrap; word-break: break-word; max-height: 170px; overflow: auto; padding: 14px; border-radius: 12px; background: var(--papel); box-shadow: inset 0 0 0 1.5px rgba(26, 19, 13, .3); line-height: 1.6; }
+    .shot__actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .refpic { background: var(--papel); border-radius: var(--r); padding: 8%; }
+    .refpic svg { width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <div class="sheet__head">
+      <a class="back mono" href="breakdown.html">← The breakdown</a>
+      <div class="sheet__title"><span class="brand__mark" data-mark="color"></span><h1 class="h2">Shot sheet</h1></div>
+      <p class="lead">Every picture and film the Racimo site needs, with what has been made so far. Each prompt carries the same look blocks word for word, and every shot that shows a bag takes the drawn pack as its reference image, so the label in the photo is the real design.</p>
+      <div class="stats2" data-stats></div>
+      <div class="routes">
+        <div class="route">
+          <h2>Automatic (Higgsfield CLI)</h2>
+          <ol>
+            <li>Open <a href="refs.html">refs.html</a> and press <b>Save the four references</b>. Free, and only needed once.</li>
+            <li><code>node higgsfield/generate.mjs</code> prints the plan, the price of every job and the balance. It spends nothing.</li>
+            <li><code>node higgsfield/generate.mjs --go</code> makes stage 1, then stage 2, then the films, then runs the optimiser.</li>
+            <li>One at a time or by group: <code>node higgsfield/generate.mjs verde-bag --go</code> · <code>images --go</code> · <code>films --go</code>. Re-roll with <code>--force</code>.</li>
+          </ol>
+        </div>
+        <div class="route">
+          <h2>By hand (Higgsfield app)</h2>
+          <ol>
+            <li>Copy a prompt below. Use the model and aspect it shows, and attach the reference image it names.</li>
+            <li>Save the download as <code>higgsfield/renders/&lt;id&gt;.png</code> (films: <code>.mp4</code>).</li>
+            <li>Run <code>npm install</code> once, then <code>node higgsfield/optimize.mjs</code>, and reload the site.</li>
+          </ol>
+        </div>
+      </div>
+      <details class="look"><summary>The look bible (shared prompt blocks)</summary><dl data-look></dl></details>
+    </div>
+    <div class="filters" role="group" aria-label="Filter shots" data-filters>
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="0" aria-pressed="false">References</button>
+      <button type="button" data-f="1" aria-pressed="false">Stage 1</button>
+      <button type="button" data-f="2" aria-pressed="false">Stage 2</button>
+      <button type="button" data-f="3" aria-pressed="false">Films</button>
+      <button type="button" data-f="pending" aria-pressed="false">Not made yet</button>
+    </div>
+    <div class="shots" data-shots></div>
+  </main>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/art.js"></script>
+  <script>
+    (function () {
+      var S = window.RACIMO_SHOTS, R = window.RACIMO_READY || {}, ART = window.RC_ART, ready = {};
+      (R.img || []).forEach(function (id) { ready[id] = 1; });
+      Object.keys(R.film || {}).forEach(function (n) { ready['film-' + n] = 1; });
+      var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+      /* credits quoted on 2026-11-20; generate.mjs re-prices live before it spends */
+      var RATE = { gpt_image_2_6: 2, soul_cinematic: 0.12 }, FILM = { 5: 18.75, 10: 37.5 };
+      var priceOf = function (s) { return s.kind === 'film' ? FILM[s.params.duration] : RATE[s.model] || 0; };
+      var cost = S.all.reduce(function (a, s) { return a + priceOf(s); }, 0);
+      var made = S.all.filter(function (s) { return ready[s.id]; }).length;
+      document.querySelector('[data-stats]').innerHTML =
+        '<span class="stat"><b>' + S.shots.length + '</b>images</span>' +
+        '<span class="stat"><b>' + S.films.length + '</b>scroll films</span>' +
+        '<span class="stat"><b>' + S.refs.length + '</b>drawn references, free</span>' +
+        '<span class="stat"><b>' + made + '</b>made</span>' +
+        '<span class="stat"><b>≈' + Math.round(cost) + '</b>credits (2026-11-20 prices)</span>';
+      document.querySelector('[data-look]').innerHTML =
+        Object.keys(S.look).map(function (k) { return '<dt>' + k + '</dt><dd>' + esc(S.look[k]) + '</dd>'; }).join('') +
+        Object.keys(S.chip).map(function (k) { return '<dt>CHIP · ' + k + '</dt><dd>' + esc(S.chip[k]) + '</dd>'; }).join('') +
+        Object.keys(S.fruit).map(function (k) { return '<dt>FRUIT · ' + k + '</dt><dd>' + esc(S.fruit[k]) + '</dd>'; }).join('');
+
+      var refs = S.refs.map(function (r) {
+        return '<article class="shot" data-stage="0" data-ready="1" id="' + r.id + '"><div class="refpic">' + ART.bag(r.chip) + '</div><div>' +
+          '<div class="shot__meta"><span class="shot__id">' + r.id + '</span><span class="tag tag--free">Drawn in code</span><span class="tag">0 credits</span></div>' +
+          '<p class="shot__brief">' + esc(r.brief) + '</p>' +
+          '<p class="shot__file">Saved as <code>' + r.file + '</code> from <a href="refs.html">refs.html</a>. Every photo of this bag is generated from it.</p></div></article>';
+      }).join('');
+      var shots = S.all.map(function (s) {
+        var p = s.params || {}, film = s.kind === 'film', ext = film ? 'mp4' : 'png';
+        return '<article class="shot" data-stage="' + s.stage + '" data-ready="' + (ready[s.id] ? 1 : 0) + '" id="' + s.id + '">' +
+          '<figure class="slot" data-shot="' + (film ? s.start : s.id) + '"></figure><div>' +
+          '<div class="shot__meta"><span class="shot__id">' + s.id + '</span>' +
+          '<span class="tag ' + (ready[s.id] ? 'tag--ready">Made' : 'tag--pending">Not made') + '</span>' +
+          '<span class="tag">' + (film ? 'Film' : 'Stage ' + s.stage) + '</span><span class="tag">' + s.model + '</span><span class="tag">' + s.aspect + '</span>' +
+          '<span class="tag">' + (film ? p.duration + ' s · ' + p.resolution : (p.resolution ? p.resolution + ' ' : '') + (p.quality || '')) + '</span>' +
+          '<span class="tag">' + priceOf(s) + ' cr</span></div>' +
+          '<p class="shot__brief">' + esc(s.brief) + '</p>' +
+          '<p class="shot__used">Used on: ' + esc(s.used.join(' · ')) + '</p>' +
+          '<p class="shot__file">Save as <code>higgsfield/renders/' + s.id + '.' + ext + '</code>' +
+          (film ? ' · First frame <code>' + s.start + '</code>, last frame <code>' + s.end + '</code>' : '') +
+          (s.refs ? ' · Reference: ' + s.refs.map(function (r) { return '<code>' + r.split('/').slice(1).join('/') + '</code>'; }).join(' ') : '') + '</p>' +
+          '<pre>' + esc(s.prompt) + '</pre>' +
+          '<div class="shot__actions"><button class="btn btn--sm" type="button" data-copy="prompt">Copy prompt</button><button class="btn btn--sm btn--ghost" type="button" data-copy="file">Copy file name</button></div>' +
+          '</div></article>';
+      }).join('');
+      document.querySelector('[data-shots]').innerHTML = refs + shots;
+
+      document.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-copy]');
+        if (!b) return;
+        var s = S.byId[b.closest('.shot').id];
+        var text = b.getAttribute('data-copy') === 'prompt' ? s.prompt : s.id + (s.kind === 'film' ? '.mp4' : '.png');
+        (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function () {
+          var t = b.textContent; b.textContent = 'Copied';
+          setTimeout(function () { b.textContent = t; }, 1400);
+        }).catch(function () { window.prompt('Copy:', text); });
+      });
+      var fb = document.querySelectorAll('[data-filters] button');
+      Array.prototype.forEach.call(fb, function (b) {
+        b.addEventListener('click', function () {
+          var f = b.getAttribute('data-f');
+          Array.prototype.forEach.call(fb, function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+          Array.prototype.forEach.call(document.querySelectorAll('.shot'), function (el) {
+            el.hidden = !(f === 'all' || el.getAttribute('data-stage') === f || (f === 'pending' && el.getAttribute('data-ready') === '0'));
+          });
+        });
+      });
+    })();
+  </script>
+  <script src="js/media.js"></script>
+  <script src="js/common.js"></script>
+</body>
+</html>

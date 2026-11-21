@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Racimo plantain chips</title>
+  <meta name="description" content="Racimo plantain chips from Talamanca, Costa Rica.">
+  <meta name="theme-color" content="#0F3D26">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/racimo.css">
+  <!-- the first paint waits until the scripts have named the hero for the page morph -->
+  <link rel="expect" href="#vt-ready" blocking="render">
+  <script src="js/motion.js"></script>
+</head>
+<body>
+  <a class="skip" href="#dia">Skip to the day</a>
+
+  <header class="nav" data-nav data-on="light">
+    <a class="brand" href="index.html" aria-label="Racimo, home"><span class="brand__mark" data-mark></span>RACIMO</a>
+    <nav class="nav__links mono" aria-label="The four days">
+      <a href="chip.html?c=verde">Verde</a>
+      <a href="chip.html?c=pinton">Pintón</a>
+      <a href="chip.html?c=maduro">Maduro</a>
+      <a href="chip.html?c=miel">Miel</a>
+    </nav>
+    <button class="nav__bag mono" type="button" data-bag-open>Bag <b data-bag-count hidden>0</b></button>
+  </header>
+
+  <main data-chip></main>
+
+  <footer class="foot" data-tone="dark">
+    <div class="foot__grid">
+      <div><p class="mono foot__h">The four days</p><ul>
+        <li><a href="chip.html?c=verde">Día 01 · Verde</a></li>
+        <li><a href="chip.html?c=pinton">Día 05 · Pintón</a></li>
+        <li><a href="chip.html?c=maduro">Día 09 · Maduro</a></li>
+        <li><a href="chip.html?c=miel">Día 12 · Miel</a></li>
+      </ul></div>
+      <div><p class="mono foot__h">Racimo</p><ul>
+        <li><a href="index.html#paila">The kettle</a></li>
+        <li><a href="index.html#origen">Origin</a></li>
+        <li><a href="index.html#caja">La caja</a></li>
+      </ul></div>
+      <div><p class="mono foot__h">Behind the draft</p><ul>
+        <li><a href="breakdown.html">Brand breakdown</a></li>
+        <li><a href="shots.html">Shot sheet</a></li>
+        <li><a href="refs.html">Pack references</a></li>
+      </ul></div>
+      <div><p class="mono foot__h">Hecho en</p><p>Talamanca, Limón<br>Costa Rica</p></div>
+    </div>
+    <p class="foot__word" aria-hidden="true">RACIMO</p>
+    <div class="foot__base">
+      <p class="foot__note">Racimo is a concept brand. Days, prices, weights, nutrition figures and grower details are placeholders written for this draft.</p>
+      <p class="mono">© <span data-year></span> Racimo <span>·</span> Pura vida <span>·</span> <button type="button" class="mono" data-motion-toggle aria-pressed="false">Reduce motion</button></p>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/media.js"></script>
+  <script src="js/chip-page.js"></script>
+  <script src="js/common.js"></script>
+  <i id="vt-ready" hidden></i>
+</body>
+</html>

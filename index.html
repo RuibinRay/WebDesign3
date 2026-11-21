@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Racimo · Plantain chips from Talamanca, Costa Rica</title>
+  <meta name="description" content="One bunch of plantains, cut on four different days as it ripens. Verde, Pintón, Maduro and Miel: four plantain chips from Talamanca, Costa Rica.">
+  <meta name="theme-color" content="#0F3D26">
+  <meta property="og:title" content="Racimo · One bunch. Four days. Four chips.">
+  <meta property="og:description" content="Plantain chips from Talamanca, Costa Rica, cut on four different days of ripeness.">
+  <meta property="og:image" content="assets/img/og.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/racimo.css">
+  <script src="js/motion.js"></script>
+</head>
+<body>
+  <a class="skip" href="#dias">Skip to the four days</a>
+
+  <header class="nav" data-nav data-on="dark">
+    <a class="brand" href="#top" aria-label="Racimo, back to the top"><span class="brand__mark" data-mark></span>RACIMO</a>
+    <nav class="nav__links mono" aria-label="Sections">
+      <a href="#dias">The four days</a>
+      <a href="#paila">The kettle</a>
+      <a href="#origen">Origin</a>
+      <a href="#cuatro">Shop</a>
+    </nav>
+    <button class="nav__bag mono" type="button" data-bag-open>Bag <b data-bag-count hidden>0</b></button>
+  </header>
+
+  <main>
+    <!-- 1. hero: the bunch ripens as you scroll -->
+    <section class="film film--hero" id="top" data-film="ripen" data-focus=".7" data-hud="day" data-tone="dark" style="--len:230">
+      <div class="film__stage">
+        <figure class="slot slot--fill film__still" data-shot="ripen-start"></figure>
+        <figure class="slot slot--fill film__still film__still--end" data-shot="ripen-end"></figure>
+        <canvas class="film__canvas" aria-hidden="true"></canvas>
+        <div class="film__draw" data-film-draw="racimo"></div>
+        <div class="film__scrim"></div>
+
+        <div class="chap chap--intro" data-in="0" data-out=".3">
+          <p class="mono">Plantain chips <span>·</span> Talamanca, Costa Rica</p>
+          <h1 class="h1">One bunch.<br>Four days.<br>Four chips.</h1>
+          <p class="lead">A plantain is a different food every few days. We cut the same racimo four times as it ripens, so every bag tastes like its day.</p>
+          <div class="chap__cta"><a class="btn" href="#dias">See the four days</a><a class="btn btn--ghost" href="#cuatro">Shop</a></div>
+        </div>
+        <div class="chap" data-in=".38" data-out=".66">
+          <h2 class="h2">Nothing is added to make it sweet.</h2>
+          <p class="lead">Green, a plantain is all starch. Leave it hanging and the starch turns to sugar by itself. Our only recipe is when to cut.</p>
+        </div>
+        <div class="chap" data-in=".74" data-out="1">
+          <h2 class="h2">Twelve days, start to black.</h2>
+          <p class="lead">Keep scrolling. The page ripens with it.</p>
+        </div>
+
+        <div class="film__hud" aria-hidden="true">
+          <div class="film__row"><span class="film__tag"></span><span class="film__beat"></span></div>
+          <div class="film__row"><span class="film__track"><span class="film__bar"><i></i></span><span class="film__ticks"></span></span><span class="film__tc">Día 01 / 12</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. what the brand believes -->
+    <section class="sec sec--hoja seam" data-tone="dark" style="--seam: var(--verde)">
+      <p class="mono kicker">The idea</p>
+      <p class="say" data-split>A plantain is never one thing. <b>Green</b>, it is starch and snap. <b>Turning</b>, it is bright. <b>Ripe</b>, it is caramel. <b>Black</b>, it is honey.</p>
+      <p class="lead rv">Most chips are made from whatever arrives at the factory that morning. Ours start with a calendar. One racimo hangs in the shade for twelve days, and we take a share of it on day 1, day 5, day 9 and day 12.</p>
+    </section>
+
+    <!-- 3. the four days -->
+    <section class="seq" id="dias" data-seq style="--len:580" aria-label="The four days">
+      <div class="seq__stage">
+        <div class="seq__top">
+          <p class="mono seq__kicker">One racimo, cut four times</p>
+          <p class="seq__day"><span class="mono">Día</span><b data-seq-day>01</b><span class="mono">/ 12</span></p>
+        </div>
+        <div class="seq__copy" data-seq-copy></div>
+        <div class="seq__mid">
+          <div class="seq__fruit" data-seq-fruit aria-hidden="true"></div>
+          <div class="seq__chips" data-seq-chips aria-hidden="true"></div>
+        </div>
+        <div class="seq__bags" data-seq-bags></div>
+        <div class="seq__rule" data-seq-rule></div>
+      </div>
+    </section>
+
+    <!-- 4. the kettle -->
+    <section class="film film--paila seam" id="paila" data-film="paila" data-focus=".68" data-tone="dark" style="--len:210; --seam: var(--ambar)">
+      <div class="film__stage">
+        <figure class="slot slot--fill film__still" data-shot="paila-start"></figure>
+        <figure class="slot slot--fill film__still film__still--end" data-shot="paila-end"></figure>
+        <canvas class="film__canvas" aria-hidden="true"></canvas>
+        <div class="film__scrim"></div>
+
+        <div class="chap chap--intro" data-in="0" data-out=".3">
+          <p class="mono">La paila <span>·</span> the kettle</p>
+          <h2 class="h2">Small kettles. Coconut oil.</h2>
+          <p class="lead">One batch at a time, the way plantain is fried on this coast.</p>
+        </div>
+        <div class="chap" data-in=".38" data-out=".66">
+          <h2 class="h2">Each day gets its own heat.</h2>
+          <p class="lead">Verde goes in hot and comes out fast. Maduro goes in low, or its sugar burns before the middle is crisp.</p>
+        </div>
+        <div class="chap" data-in=".74" data-out="1">
+          <h2 class="h2">Out, salted, sealed.</h2>
+          <p class="lead">Sea salt while the chips are still hot. Then the bag is stamped with the day it was cut.</p>
+        </div>
+
+        <div class="film__hud" aria-hidden="true">
+          <div class="film__row"><span class="film__tag"></span><span class="film__beat"></span></div>
+          <div class="film__row"><span class="film__track"><span class="film__bar"><i></i></span><span class="film__ticks"></span></span><span class="film__tc">00:00.0</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. how it is made -->
+    <section class="sec sec--ambar proceso seam" data-tone="light" id="proceso" style="--seam: var(--papel)">
+      <div class="proceso__side">
+        <div><p class="mono kicker">From racimo to bag</p><h2 class="h2" data-split>Five verbs.</h2></div>
+        <div class="proceso__pic rv-clip"><figure class="slot" data-shot="tajar" data-sizes="(max-width: 900px) 92vw, 34vw"></figure></div>
+      </div>
+      <ol class="steps" data-steps></ol>
+    </section>
+
+    <!-- 6. origin -->
+    <section class="sec sec--paper origin" data-tone="light" id="origen">
+      <div class="origin__text">
+        <p class="mono kicker">Origin</p>
+        <h2 class="h2" data-split>Talamanca, on the Caribbean side.</h2>
+        <p class="lead rv">Down in the south-east corner of Costa Rica, where the Sixaola river runs along the Panama border, plantain grows the whole year. There is no season to wait for. There is only the next bunch.</p>
+        <div data-map class="rv"></div>
+        <div class="stats rv">
+          <p><b>12</b><span>days from cut to black</span></p>
+          <p><b>4</b><span>cuts from every bunch</span></p>
+          <p><b>3</b><span>ingredients in Verde</span></p>
+        </div>
+      </div>
+      <div class="origin__pics">
+        <div class="rv-clip"><figure class="slot" data-shot="finca" data-sizes="(max-width: 900px) 92vw, 54vw"></figure></div>
+        <div class="rv-clip"><figure class="slot" data-shot="corte" data-sizes="(max-width: 900px) 46vw, 27vw"></figure></div>
+        <div class="rv-clip"><figure class="slot" data-shot="rio" data-sizes="(max-width: 900px) 46vw, 27vw"></figure></div>
+      </div>
+    </section>
+
+    <!-- 7. the four (shop) -->
+    <section class="sec sec--paper seam" data-tone="light" id="cuatro" style="padding-top:0; --seam: var(--maduro)">
+      <div class="sec__head sec__head--split">
+        <div><p class="mono kicker">The four</p><h2 class="h2" data-split>Pick a day.</h2></div>
+        <p class="lead rv">Same plantain, same oil, same salt. The only thing that changes from bag to bag is how long we waited.</p>
+      </div>
+      <p class="mono hint3d" data-b3-hint hidden>Every bag is 3D <span>·</span> drag one to turn it</p>
+      <div class="cards" data-four></div>
+    </section>
+
+    <!-- 8. con qué -->
+    <section class="sec sec--maduro seam" data-tone="light" id="con-que" style="--seam: var(--hoja)">
+      <div class="sec__head sec__head--split">
+        <div><p class="mono kicker">Con qué</p><h2 class="h2" data-split>What to eat them with.</h2></div>
+        <p class="lead rv">In Costa Rica a plate of plantain rarely travels alone. Each day has something it is usually found next to.</p>
+      </div>
+      <div class="pairs" data-pairs></div>
+    </section>
+
+    <!-- 9. la caja -->
+    <section class="sec sec--hoja caja seam" data-tone="dark" id="caja" style="--seam: var(--noche)">
+      <div class="caja__text">
+        <p class="mono kicker">La caja <span>·</span> $16 a month</p>
+        <h2 class="h2" data-split>The whole racimo, in one box.</h2>
+        <p class="lead rv">One bag of each day, every month: Verde, Pintón, Maduro, Miel. Eat them in order and you have tasted twelve days.</p>
+        <form class="signup rv" data-signup novalidate>
+          <label class="mono" for="email">Tell me when the first racimo is cut</label>
+          <div class="signup__row">
+            <input id="email" type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+            <button class="btn" type="submit">Join the list</button>
+          </div>
+          <p class="signup__msg" data-signup-msg role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="caja__pic rv-clip"><figure class="slot" data-shot="box" data-sizes="(max-width: 900px) 92vw, 46vw"></figure></div>
+      <div class="caja__wheel" data-wheel aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <footer class="foot" data-tone="dark">
+    <div class="foot__grid">
+      <div><p class="mono foot__h">The four days</p><ul>
+        <li><a href="chip.html?c=verde">Día 01 · Verde</a></li>
+        <li><a href="chip.html?c=pinton">Día 05 · Pintón</a></li>
+        <li><a href="chip.html?c=maduro">Día 09 · Maduro</a></li>
+        <li><a href="chip.html?c=miel">Día 12 · Miel</a></li>
+      </ul></div>
+      <div><p class="mono foot__h">Racimo</p><ul>
+        <li><a href="#paila">The kettle</a></li>
+        <li><a href="#origen">Origin</a></li>
+        <li><a href="#caja">La caja</a></li>
+      </ul></div>
+      <div><p class="mono foot__h">Behind the draft</p><ul>
+        <li><a href="breakdown.html">Brand breakdown</a></li>
+        <li><a href="shots.html">Shot sheet</a></li>
+        <li><a href="refs.html">Pack references</a></li>
+      </ul></div>
+      <div><p class="mono foot__h">Hecho en</p><p>Talamanca, Limón<br>Costa Rica</p></div>
+    </div>
+    <p class="foot__word" aria-hidden="true">RACIMO</p>
+    <div class="foot__base">
+      <p class="foot__note">Racimo is a concept brand. Days, prices, weights, nutrition figures and grower details are placeholders written for this draft.</p>
+      <p class="mono">© <span data-year></span> Racimo <span>·</span> Pura vida <span>·</span> <button type="button" class="mono" data-motion-toggle aria-pressed="false">Reduce motion</button></p>
+    </div>
+  </footer>
+
+  <div class="gauge" data-gauge aria-hidden="true"><i></i></div>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/media.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/film.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

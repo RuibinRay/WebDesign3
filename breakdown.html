@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brand breakdown · Racimo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/racimo.css">
+  <script src="js/motion.js"></script>
+  <style>
+    body { background: var(--papel); }
+    .bd { --fg: var(--tinta); color: var(--tinta); }
+    .bd__top { background: var(--hoja); color: var(--papel); padding: calc(var(--nav-h) + 40px) var(--pad) clamp(48px, 7vw, 100px); display: grid; gap: 22px; }
+    .bd__top .brand__mark { width: 64px; height: 64px; }
+    .bd section { padding: clamp(48px, 7vw, 110px) var(--pad); border-top: 1.5px solid var(--tinta); display: grid; gap: 28px; }
+    @media (min-width: 960px) { .bd section { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 56px; } }
+    .bd h2 { font-stretch: 75%; font-weight: 800; font-size: clamp(36px, 4.4vw, 68px); line-height: .92; }
+    .bd h2 small { display: block; font-family: var(--f-mono); font-size: 12px; font-weight: 400; font-stretch: 100%; letter-spacing: .08em; text-transform: uppercase; opacity: .6; margin-bottom: 14px; }
+    .bd__body { display: grid; gap: 18px; align-content: start; }
+    .bd__body p { max-width: 44em; }
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+    .sw { display: grid; gap: 6px; }
+    .sw i { height: 92px; border-radius: 14px; box-shadow: inset 0 0 0 1.5px var(--tinta); }
+    .sw b { font-weight: 700; }
+    .sw span { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; opacity: .75; }
+    .tbl { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+    .tbl th, .tbl td { text-align: left; vertical-align: top; padding: 11px 14px 11px 0; border-bottom: 1.5px solid rgba(26, 19, 13, .2); font-weight: 400; }
+    .tbl thead th { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+    .tbl td:first-child, .tbl th[scope="row"] { font-weight: 700; white-space: nowrap; }
+    .tbl-wrap { overflow-x: auto; }
+    .spec1 { font-stretch: 75%; font-weight: 800; font-size: clamp(56px, 8vw, 128px); line-height: .86; letter-spacing: -.02em; }
+    .spec2 { font-size: clamp(19px, 1.5vw, 25px); line-height: 1.38; max-width: 30em; }
+    .drawn { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; align-items: end; }
+    .drawn figure { display: grid; gap: 8px; }
+    .drawn .tile { display: grid; place-items: center; padding: 14px; border-radius: 14px; aspect-ratio: 1; box-shadow: inset 0 0 0 1.5px var(--tinta); overflow: hidden; }
+    .drawn svg { width: 100%; height: auto; max-height: 100%; overflow: visible; }
+    .drawn figcaption { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; opacity: .75; }
+    .bd__links { display: flex; flex-wrap: wrap; gap: 10px; }
+    code { font-family: var(--f-mono); font-size: 12.5px; background: rgba(26, 19, 13, .08); padding: 2px 6px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <header class="nav" data-nav data-on="dark">
+    <a class="brand" href="index.html" aria-label="Racimo, home"><span class="brand__mark" data-mark></span>RACIMO</a>
+    <nav class="nav__links mono" aria-label="Draft pages"><a href="index.html">The site</a><a href="shots.html">Shot sheet</a><a href="refs.html">Pack references</a></nav>
+    <span></span>
+  </header>
+
+  <main class="bd">
+    <div class="bd__top" data-tone="dark">
+      <span class="brand__mark" data-mark="color" data-on-dark></span>
+      <p class="mono">Brand breakdown <span>·</span> concept draft <span>·</span> 2026-11-20</p>
+      <h1 class="h1">Ripeness is the recipe.</h1>
+      <p class="lead">Racimo is a plantain chip brand from Talamanca, Costa Rica. This page explains every decision in the draft: the idea, the name, the range, the colours, the type, what moves and why, and what is still to be generated.</p>
+      <div class="bd__links" style="--fg: var(--papel); --btn-on: var(--tinta)"><a class="btn" href="index.html">Open the site</a><a class="btn btn--ghost" href="shots.html">Shot sheet</a></div>
+    </div>
+
+    <section data-tone="light">
+      <h2><small>01</small>The idea</h2>
+      <div class="bd__body">
+        <p class="spec2">A plantain is four different foods depending on the day you cut it. Racimo sells that, and nothing else.</p>
+        <p>Every plantain chip brand says the same things: crunchy, natural, tropical. None of them is built on the one fact every Costa Rican cook already knows, which is that a green plantain and a black one behave like different vegetables. Green is starch: it fries pale and snaps. Black is sugar: it caramelises and chews. The range, the page, the pack and the pictures all come from that single scale of twelve days.</p>
+        <p>So the site ripens. The hero bunch goes from green to black as you scroll. The page colour follows the peel. Each bag is the colour of its day and carries a day stamp. The words on the buttons are the only place the brand raises its voice.</p>
+      </div>
+    </section>
+
+    <section data-tone="light">
+      <h2><small>02</small>The name</h2>
+      <div class="bd__body">
+        <p class="spec1">Racimo</p>
+        <p>A <em>racimo</em> is a bunch of plantains, the whole stalk as it is cut from the plant. It is short, it sounds like what it is in Spanish, an English speaker can say it (rah-SEE-moh), and it holds the idea: everything in the range comes off one bunch.</p>
+        <p>A web search on 2026-11-20 found no plantain chip brand with this name. That is a quick check, not a trademark clearance.</p>
+        <p>The four products are named with the words already used for the fruit at each stage: <b>Verde</b> (green), <b>Pintón</b> (turning, literally “painted”), <b>Maduro</b> (ripe) and <b>Miel</b> (honey, for the black stage when the fruit is almost syrup).</p>
+      </div>
+    </section>
+
+    <section data-tone="light">
+      <h2><small>03</small>The range</h2>
+      <div class="bd__body"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Day</th><th>Name</th><th>Cut</th><th>Flavour</th><th>Tastes</th><th>Eaten with</th></tr></thead><tbody data-range></tbody></table></div>
+        <p>Each day has its own cut for a reason. Green fruit is hard enough to slice into long thin ribbons. Ripe fruit is too soft for that, so it is cut thicker and on the bias, and the black stage is cut into thick rounds and dried before it is fried.</p></div>
+    </section>
+
+    <section data-tone="light">
+      <h2><small>04</small>The colours</h2>
+      <div class="bd__body">
+        <p>The palette is the peel. Four colours are the four days and are used as full flat backgrounds, never as tints. Leaf green is the plant before day 1 and opens and closes the page. Paper and ink carry the reading. One red, taken from the painted oxcarts of Sarchí, is kept for the day stamp, the small dot before each section label, and hover.</p>
+        <p><b>The four peel colours are taken from the photographs.</b> Once the pictures existed, each backdrop was sampled and the site’s green, yellow-green, gold and black-brown were set to those values. A photo, the drawn bag and the section behind them are now one colour, so nothing sits in a visible box.</p>
+        <p><b>How the colour is finished.</b> Between two days the page colour is mixed in a perceptual colour space, so green turns to yellow through a bright yellow-green and not through olive. Every colour world has a soft pool of light behind its subject. A fine print grain lies over the whole page, photographs and films included, so flat colour reads as ink on paper. Where two colours meet, the edge is cut in small teeth like the crimped end of a chip bag. Amber, the colour of the frying oil, takes the section that follows the kettle.</p>
+        <div class="swatches" data-swatches></div>
+      </div>
+    </section>
+
+    <section data-tone="light">
+      <h2><small>05</small>The type</h2>
+      <div class="bd__body">
+        <p class="spec1">Verde. Pintón.<br>Maduro. Miel.</p>
+        <p><b>Bricolage Grotesque</b>, set narrow and heavy, for names and headlines: it has the weight of a hand-painted pulpería sign without imitating one. The same family at its regular width is the reading face, so the page uses one voice at two volumes.</p>
+        <p class="mono">DM Mono · días · labels · numbers · 01 05 09 12</p>
+        <p><b>DM Mono</b> is for anything that reads like a stamp or a ledger: the day counter, labels, data. Spanish is used where the Spanish word is the real name of the thing (racimo, pintón, paila, con qué) and is always explained once.</p>
+      </div>
+    </section>
+
+    <section data-tone="light">
+      <h2><small>06</small>Drawn in code</h2>
+      <div class="bd__body">
+        <p>Everything below is drawn by <code>js/art.js</code> from <code>js/data.js</code>. Because of that the site is complete before any photograph exists: where a photo is missing, the right drawing stands in on the right colour.</p>
+        <div class="drawn" data-drawn></div>
+        <p>The round chip and the painted wheel are one drawing. A slice of plantain shows a three-part core; an oxcart wheel from Sarchí is a ring of points around a flower. Put together they make the roundel on every bag.</p>
+        <p><b>Every bag is real-time 3D.</b> <code>js/bag3d.js</code> builds a pillow bag in code (two shells, sealed flat at the top and bottom, fuller at the bottom where chips settle) and wraps it in the same drawing, front and back. It gets an ink outline and a flat shadow so it sits in the drawn world. One WebGL renderer serves all the bags on a page and only draws the ones on screen. The drawn bag shows first and stays wherever WebGL is missing.</p>
+        <p><b>The pack is never invented by the image model.</b> Each bag front is saved from <a href="refs.html">refs.html</a> as a PNG and passed to Higgsfield as the reference image for every shot that shows a bag, so the label in the photographs is this design, with its real lettering.</p>
+      </div>
+    </section>
+
+    <section data-tone="light">
+      <h2><small>07</small>What moves, and why</h2>
+      <div class="bd__body"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Where</th><th>What happens</th><th>Why it is there</th></tr></thead><tbody>
+        <tr><th scope="row">Hero</th><td>Scrolling ripens the hanging bunch from day 1 to day 12. A drawing now; a scrubbed time-lapse film once generated.</td><td>Explanation. It is the whole idea in one move, and the visitor controls the speed.</td></tr>
+        <tr><th scope="row">The four days</th><td>One pinned screen. Scroll rests on each chip, then moves on; the plantain ripens, the page takes the colour of the peel, the day counter and the starch and sugar bars follow, the chips fan out and the bag slides in.</td><td>Explanation. The pauses are deliberate: the scroll-to-day curve has four plateaus so each product gets a still moment.</td></tr>
+        <tr><th scope="row">The kettle</th><td>A second scroll film: slices go in, the oil boils up, chips are lifted out.</td><td>Explanation, and appetite. Until it exists, two stand-ins crossfade from pale to golden.</td></tr>
+        <tr><th scope="row">Headlines</th><td>Words rise from behind a mask, once, 45 ms apart.</td><td>Hierarchy on first read. Never repeats.</td></tr>
+        <tr><th scope="row">Pictures</th><td>Unmask from the top with a clip-path, once.</td><td>Stops images popping in; shows that they belong to the section arriving.</td></tr>
+        <tr><th scope="row">Home → chip page</th><td>The bag you clicked flies into the chip page and its name grows into the title (View Transitions).</td><td>Spatial consistency: it is the same bag.</td></tr>
+        <tr><th scope="row">The bags</th><td>Every bag is 3D and can be handled with the mouse or a finger. Drag one to turn it all the way round and tilt it; let go and it keeps spinning, then slows. It leans toward a pointer that comes near. On the four-days screen each bag also turns to face you as its day arrives. Away from the chip page a bag settles back to its resting pose once the pointer leaves it. On a chip page it stays where you leave it: “Turn the bag over” or a double-click flips it to the nutrition panel, and the arrow keys turn it. Dragging a bag never follows the link it sits in; a plain click still does.</td><td>It is a product you would pick up and turn, so it behaves like one. Everything here is driven by the visitor, and the flip shows where the back-of-pack information is.</td></tr>
+        <tr><th scope="row">Menu links</th><td>A long jump plays as a fast-forward, at most 2.6 s, so the page visibly ripens past you.</td><td>Keeps the sense of place a jump cut would lose.</td></tr>
+        <tr><th scope="row">Buttons</th><td>Press scales to 0.97 in 160 ms. Hover only on devices that hover.</td><td>Feedback.</td></tr>
+        <tr><th scope="row">Reduce motion</th><td>Footer switch, remembered; phones follow the system setting. Smooth scroll, word and picture reveals, page morphs, and the bags’ breathing and lean all stop; the bags stay 3D and can still be dragged. Scroll-driven scenes still follow the scroll, without the extra movement.</td><td>The visitor decides.</td></tr>
+      </tbody></table></div>
+        <p>Easing is one strong ease-out for things arriving and one ease-in-out for things travelling. Only transform, opacity and clip-path are animated.</p></div>
+    </section>
+
+    <section data-tone="light">
+      <h2><small>08</small>Pages</h2>
+      <div class="bd__body"><div class="tbl-wrap"><table class="tbl"><tbody>
+        <tr><th scope="row"><a href="index.html">index.html</a></th><td>Hero film · the idea · the four days · the kettle film · five verbs · origin and map · the four (shop) · con qué · la caja · footer</td></tr>
+        <tr><th scope="row"><a href="chip.html?c=verde">chip.html?c=…</a></th><td>One template, four chips. The 3D pack (drag it, or turn it over), sizes and price, the day (a ruler you can drag across all twelve days), the cut, con qué, nutrition, the next day.</td></tr>
+        <tr><th scope="row"><a href="shots.html">shots.html</a></th><td>Every prompt with copy buttons, prices and status.</td></tr>
+        <tr><th scope="row"><a href="refs.html">refs.html</a></th><td>The drawn packs, saved as reference images.</td></tr>
+        <tr><th scope="row">breakdown.html</th><td>This page.</td></tr>
+      </tbody></table></div></div>
+    </section>
+
+    <section data-tone="light">
+      <h2><small>09</small>Pictures and films</h2>
+      <div class="bd__body">
+        <p class="spec2" data-cost></p>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Stage</th><th>What</th><th>Model</th><th>Reference</th></tr></thead><tbody>
+          <tr><th scope="row">0</th><td>Four pack fronts</td><td>Drawn in code, free</td><td>None. Already saved in <code>higgsfield/refs/</code>.</td></tr>
+          <tr><th scope="row">1</th><td>Fruit and chips for each day; the first frame of each film; four places and hands</td><td>GPT Image for food, Soul Cinematic for places</td><td>None</td></tr>
+          <tr><th scope="row">2</th><td>Every shot with a bag; the box; the last frame of each film</td><td>GPT Image</td><td>The drawn pack, or the film’s first frame</td></tr>
+          <tr><th scope="row">3</th><td>Two scroll films: the bunch ripening (10 s), the kettle (5 s)</td><td>Kling, image to video</td><td>First and last frame</td></tr>
+        </tbody></table></div>
+        <p><b data-made></b> <code>node higgsfield/generate.mjs</code> prints what is still to make and live prices without spending; <code>--go</code> runs it, and <code>--force</code> re-rolls a named picture. The full list is on the <a href="shots.html">shot sheet</a>.</p>
+      </div>
+    </section>
+
+    <section data-tone="light">
+      <h2><small>10</small>What is invented</h2>
+      <div class="bd__body">
+        <p>Racimo does not exist. These are placeholders written for the design and must be replaced with real ones before anything is published: the day numbers (1, 5, 9, 12) and the waiting days; prices and pack weights; cut thicknesses and frying notes; all nutrition figures; the use of coconut oil; cacao on Miel; everything said about growers, kettles and the box subscription.</p>
+        <p>What is true and was kept deliberately general: Talamanca is in Limón province on the Caribbean side by the Panama border; the Sixaola river runs along that border; plantain grows year-round; a plantain’s starch turns to sugar as it ripens; in Costa Rica “chimichurri” means chopped tomato, onion and cilantro. The map is a sketch from rough coordinates and is not for navigation.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot" data-tone="dark">
+    <div class="foot__base" style="margin-top:0;border:0;padding:0">
+      <p class="foot__note">Racimo is a concept brand made as a design draft.</p>
+      <p class="mono">© <span data-year></span> Racimo <span>·</span> <button type="button" class="mono" data-motion-toggle aria-pressed="false">Reduce motion</button></p>
+    </div>
+  </footer>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="assets/img/ready.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shots.js"></script>
+  <script src="js/art.js"></script>
+  <script>
+    (function () {
+      var D = window.RACIMO, S = window.RACIMO_SHOTS, ART = window.RC_ART;
+      var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+      document.querySelector('[data-range]').innerHTML = D.chips.map(function (c) {
+        return '<tr><td>Día ' + c.dayLabel + '</td><td><a href="chip.html?c=' + c.id + '">' + esc(c.name) + '</a></td><td>' + esc(c.cut.name + ': ' + c.cut.what.toLowerCase() + ', ' + c.cut.thick) +
+          '</td><td>' + esc(c.flavor) + '</td><td>' + esc(c.taste.join(', ')) + '</td><td>' + esc(c.pair.name) + '</td></tr>';
+      }).join('');
+      var roles = {
+        hoja: ['Hoja', 'The plant. Hero, la caja.'], verde: ['Verde', 'Day 1'], pinton: ['Pintón', 'Day 5'], maduro: ['Maduro', 'Day 9'], miel: ['Miel', 'Day 12'],
+        ambar: ['Ámbar', 'Frying oil: the five verbs, light on the black stage'], achiote: ['Achiote', 'Day stamp, label dot, hover'], papel: ['Papel', 'Reading background'], tinta: ['Tinta', 'Text, outlines'],
+      };
+      document.querySelector('[data-swatches]').innerHTML = Object.keys(roles).map(function (k) {
+        return '<div class="sw"><i style="background:' + D.color[k] + '"></i><b>' + roles[k][0] + '</b><span>' + D.color[k] + ' · ' + roles[k][1] + '</span></div>';
+      }).join('');
+      var tile = function (bg, html, cap, fg) { return '<figure><div class="tile" style="background:' + bg + ';color:' + (fg || D.color.tinta) + '">' + html + '</div><figcaption>' + cap + '</figcaption></figure>'; };
+      document.querySelector('[data-drawn]').innerHTML =
+        tile(D.color.hoja, '<span style="width:60%;display:block">' + ART.mark({ color: true, onDark: true }) + '</span>', 'The mark: four days in one hand') +
+        tile(D.color.hoja, '<span data-ripe="0.45" style="width:86%;display:block">' + ART.racimo() + '</span>', 'The racimo, mid-ripening') +
+        D.chips.map(function (c) { return tile(c.world, '<span data-ripe="' + c.t + '" style="width:100%;display:block;transform:rotate(-14deg)">' + ART.plantain({ seed: 20 + c.index }) + '</span>', 'Día ' + c.dayLabel); }).join('') +
+        D.chips.map(function (c) { return tile(D.color.papel, '<span style="width:70%;display:block">' + ART.chip(c.id, { seed: 3 }) + '</span>', c.cut.name); }).join('') +
+        D.chips.map(function (c) { return tile(D.color.papel, '<span style="width:62%;display:block">' + ART.bag3d(c.id, 'card') + '</span>', c.name + ' pack, in 3D'); }).join('') +
+        tile(D.color.maduro, '<span style="width:84%;display:block">' + ART.wheel('maduro') + '</span>', 'The wheel');
+      var gpt = S.shots.filter(function (s) { return s.model === 'gpt_image_2_6'; }).length, soul = S.shots.length - gpt;
+      var total = gpt * 2 + soul * 0.12 + S.films.reduce(function (a, f) { return a + (f.params.duration === 10 ? 37.5 : 18.75); }, 0);
+      document.querySelector('[data-cost]').textContent = S.shots.length + ' images and ' + S.films.length + ' scroll films, about ' + Math.round(total) + ' Higgsfield credits at the prices quoted on 2026-11-20.';
+      var R = window.RACIMO_READY || {}, imgs = (R.img || []).length, films = Object.keys(R.film || {}).length;
+      document.querySelector('[data-made]').textContent = imgs === S.shots.length && films === S.films.length
+        ? 'All ' + imgs + ' images and both films have been generated.'
+        : imgs + ' of ' + S.shots.length + ' images and ' + films + ' of ' + S.films.length + ' films have been generated so far.';
+    })();
+  </script>
+  <script src="js/media.js"></script>
+  <script src="js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+/* Written by higgsfield/optimize.mjs. Lists what exists, so the site never requests a missing file. */
+window.RACIMO_READY = {"img":["box","corte","finca","maduro-bag","maduro-fruit","maduro-pair","maduro-pile","miel-bag","miel-fruit","miel-pair","miel-pile","paila-end","paila-start","pinton-bag","pinton-fruit","pinton-pair","pinton-pile","rio","ripen-end","ripen-start","tajar","verde-bag","verde-fruit","verde-pair","verde-pile"],"film":{"ripen":{"d":121,"m":121},"paila":{"d":61,"m":61}}};
